@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "IfzLr0QNQ6vpnQ7XpeGhEpPBmJ9wotZMYMLAWqUTWAY=",
+  "Source": "ambrosia-alert-api",
+  "BasePath": "_content/ambrosia-alert-api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
