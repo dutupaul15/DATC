@@ -86,40 +86,6 @@ namespace ambrosia_alert_api.Controllers
             return segment.Results.First();
         }
 
-
-
-
-        // PUT: api/StudentsItems/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //[HttpPut("{id}")]
-        // public async Task<IActionResult> PutStudentsItem(long id, StudentsItem studentsItem)
-        // {
-        //     if (id != studentsItem.Id)
-        //     {
-        //         return BadRequest();
-        //     }
-
-        //     _context.Entry(studentsItem).State = EntityState.Modified;
-
-        //     try
-        //     {
-        //         await _context.SaveChangesAsync();
-        //     }
-        //     catch (DbUpdateConcurrencyException)
-        //     {
-        //         if (!StudentsItemExists(id))
-        //         {
-        //             return NotFound();
-        //         }
-        //         else
-        //         {
-        //             throw;
-        //         }
-        //     }
-
-        //     return NoContent();
-        // }
-
         // POST: api/StudentsItems
         [HttpPost]
         public async Task<ActionResult<UserItem>> CreateUserItem(UserItem user)
@@ -144,29 +110,29 @@ namespace ambrosia_alert_api.Controllers
             }
         }
 
-        // DELETE: api/StudentsItems/5
+        // DELETE: api/UsersItems/5
         //[HttpDelete("{id}")]
-        // public async Task<IActionResult> DeleteStudentsItem(long id)
+        // public async Task<IActionResult> DeleteUserItem(long id)
         // {
-        //     if (_context.StudentsItems == null)
+        //     if (_context.UsersItems == null)
         //     {
         //         return NotFound();
         //     }
-        //     var studentsItem = await _context.StudentsItems.FindAsync(id);
-        //     if (studentsItem == null)
+        //     var userItem = await _context.UsersItems.FindAsync(id);
+        //     if (userItem == null)
         //     {
         //         return NotFound();
         //     }
 
-        //     _context.StudentsItems.Remove(studentsItem);
+        //     _context.UsersItems.Remove(userItem);
         //     await _context.SaveChangesAsync();
 
         //     return NoContent();
         // }
 
-        // private bool StudentsItemExists(long id)
+        // private bool UserItemExists(long id)
         // {
-        //     return (_context.StudentsItems?.Any(e => e.Id == id)).GetValueOrDefault();
+        //     return (_context.UsersItems?.Any(e => e.Id == id)).GetValueOrDefault();
         // }
 
     }
