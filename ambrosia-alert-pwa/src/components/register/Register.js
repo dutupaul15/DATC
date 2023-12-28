@@ -14,7 +14,6 @@ import { useNavigate } from "react-router-dom";
 export default function RegisterPage() {
   let navigate = useNavigate();
 
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -22,6 +21,17 @@ export default function RegisterPage() {
       email: data.get("email"),
       password: data.get("password"),
     });
+    fetch("https://localhost:7262/swagger", {
+      method: "GET",
+      headers: {
+        "Access-Control-Allow-Origin": "https://localhost:7262/swagger",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => console.log(error));
   };
 
   function handleClick() {
