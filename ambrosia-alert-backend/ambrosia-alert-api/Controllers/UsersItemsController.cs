@@ -9,6 +9,7 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
 
 using ambrosia_alert_api.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace ambrosia_alert_api.Controllers
 {
@@ -16,7 +17,7 @@ namespace ambrosia_alert_api.Controllers
     [ApiController]
     public class UsersItemsController : ControllerBase
     {
-        private readonly CloudTable? _table;
+        private readonly CloudTable _table;
 
         public UsersItemsController(IConfiguration configuration)
         {
@@ -29,31 +30,32 @@ namespace ambrosia_alert_api.Controllers
         }
 
         // GET: api/UsersItems
+        [EnableCors("_myAllowSpecificOrigins")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserItem>>> GetUsersItems()
         {
             var query = new TableQuery<UserItem>();
-            var students = new List<UserItem>();
+            var users = new List<UserItem>();
 
             TableContinuationToken? token = null;
 
             do
             {
                 TableQuerySegment<UserItem> segment = await _table.ExecuteQuerySegmentedAsync(query, token);
-                students.AddRange(segment.Results);
+                users.AddRange(segment.Results);
                 token = segment.ContinuationToken;
             } while (token != null);
 
-            if (students == null || students.Count == 0)
+            if (users == null || users.Count == 0)
             {
                 return NotFound();
             }
 
-            return students;
+            return users;
         }
 
-
         // GET: api/UsersItems/{partitionKey}/{rowKey}
+        [EnableCors("_myAllowSpecificOrigins")]
         [HttpGet("{partitionKey}/{rowKey}")]
         public async Task<ActionResult<UserItem>> GetUserItem(string partitionKey, string rowKey)
         {
@@ -67,12 +69,11 @@ namespace ambrosia_alert_api.Controllers
 
             TableContinuationToken? token = null;
             TableQuerySegment<UserItem> segment;
-
             try
             {
                 segment = await _table.ExecuteQuerySegmentedAsync(query, token);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // Handle exceptions, such as table not found, as needed
                 return NotFound();
@@ -86,7 +87,8 @@ namespace ambrosia_alert_api.Controllers
             return segment.Results.First();
         }
 
-        // POST: api/StudentsItems
+        // POST: api/UsersItems
+        [EnableCors("_myAllowSpecificOrigins")]
         [HttpPost]
         public async Task<ActionResult<UserItem>> CreateUserItem(UserItem user)
         {
@@ -103,7 +105,7 @@ namespace ambrosia_alert_api.Controllers
                 // Return the created student object with the generated row key
                 return CreatedAtAction("GetUserItem", new { partitionKey = user.PartitionKey, rowKey = user.RowKey }, user);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // Handle exceptions, such as conflicts or table not found, as needed
                 return BadRequest(); // You can return a different status code based on the specific error

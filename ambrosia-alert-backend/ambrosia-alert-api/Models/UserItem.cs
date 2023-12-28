@@ -16,11 +16,11 @@ public class UserItem : TableEntity
     public string? Password {get; set;}
 
 
-    public void ReadEntity(IDictionary<string, EntityProperty> properties, OperationContext operationContext)
+    public override void ReadEntity(IDictionary<string, EntityProperty> properties, OperationContext operationContext)
     {
         TableEntity.ReadUserObject(this, properties, operationContext);
     }
-    public IDictionary<string, EntityProperty> WriteEntity(OperationContext operationContext)
+    public override IDictionary<string, EntityProperty> WriteEntity(OperationContext operationContext)
     {
         return TableEntity.WriteUserObject(this, operationContext);
     }

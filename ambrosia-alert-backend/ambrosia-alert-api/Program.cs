@@ -4,22 +4,22 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
-var  MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: MyAllowSpecificOrigins,
-                      policy  =>
+                      policy =>
                       {
                           policy.WithOrigins("http://localhost:3000");
+
                       });
 });
 
-// Add services to the container.
-builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+//builder.Services.AddEndpointsApiExplorer();
+//builder.Services.AddSwaggerGen();
 
 // Create an Azure Storage Table client  
 string connectionString = "DefaultEndpointsProtocol=https;AccountName=datctable1;AccountKey=i2NdpOOkCX3MuBvbXrNB8Hqgo3CTk1zVQaVrDCHPj5LrkC+le3IwbPyXOHpmzOKxlPnNw5nC2+zv+AStc9Y4VQ==;EndpointSuffix=core.windows.net";
@@ -31,18 +31,23 @@ TableClient tableClient = tableServiceClient.GetTableClient(tableName);
 // Register the Azure Storage Table client in the dependency injection container
 builder.Services.AddSingleton(tableClient);
 
+// Add services to the container.
+builder.Services.AddControllers();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+// if (app.Environment.IsDevelopment())
+// {
+//     app.UseSwagger();
+//     app.UseSwaggerUI();
+// }
 
 app.UseHttpsRedirection();
 
-app.UseCors(MyAllowSpecificOrigins);
+app.UseRouting();
+//app.UseCors(MyAllowSpecificOrigins);
+app.UseCors();
 
 app.UseAuthorization();
 
