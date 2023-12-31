@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ambrosia-alert-api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ae8f71cb263c9fa287bb6e577d26d148b380fbe7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("ambrosia-alert-api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ambrosia-alert-api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
