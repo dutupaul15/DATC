@@ -21,13 +21,13 @@ export default function RegisterPage() {
       email: data.get("email"),
       password: data.get("password"),
     });
-    fetch("https://localhost:7262/swagger", {
+    fetch("https://localhost:7262/api/UsersItems", {
       method: "GET",
-      headers: {
-        "Access-Control-Allow-Origin": "https://localhost:7262/swagger",
-      },
     })
-      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        return response.json();
+      })
       .then((data) => {
         console.log(data);
       })

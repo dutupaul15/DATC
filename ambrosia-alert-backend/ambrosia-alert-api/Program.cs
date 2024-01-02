@@ -11,15 +11,17 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: MyAllowSpecificOrigins,
                       policy =>
                       {
-                          policy.WithOrigins("http://localhost:3000");
+                          policy.WithOrigins("http://localhost:3000")
+                                .AllowAnyHeader()
+                                .AllowAnyMethod();
 
                       });
 });
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-//builder.Services.AddEndpointsApiExplorer();
-//builder.Services.AddSwaggerGen();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 // Create an Azure Storage Table client  
 string connectionString = "DefaultEndpointsProtocol=https;AccountName=datctable1;AccountKey=i2NdpOOkCX3MuBvbXrNB8Hqgo3CTk1zVQaVrDCHPj5LrkC+le3IwbPyXOHpmzOKxlPnNw5nC2+zv+AStc9Y4VQ==;EndpointSuffix=core.windows.net";
@@ -37,17 +39,17 @@ builder.Services.AddControllers();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-// if (app.Environment.IsDevelopment())
-// {
-//     app.UseSwagger();
-//     app.UseSwaggerUI();
-// }
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 app.UseHttpsRedirection();
 
 app.UseRouting();
-//app.UseCors(MyAllowSpecificOrigins);
-app.UseCors();
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthorization();
 
