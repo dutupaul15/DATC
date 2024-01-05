@@ -6,6 +6,9 @@ import Grid from "@mui/material/Grid";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css'; // Import the Leaflet CSS
+import Button from "@mui/material/Button";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+
 
 const myIcon = L.icon({
   iconUrl: '/location.png', // Replace with the path to your image
@@ -57,6 +60,17 @@ const DashboardPage = () => {
           alignItems: "center" // Add this line
         }}
       >
+        {/* Label on Top Left */}
+        <Typography
+          variant="h6"
+          sx={{
+            position: "absolute",
+            top: "60px",
+            left: "400px",
+          }}
+        >
+          Ambroia locations
+        </Typography>
         <Typography component="h1" variant="h5">
           Ambrosia Alert Dashboard
         </Typography>
@@ -86,26 +100,92 @@ const DashboardPage = () => {
           sx={{
             marginTop: 3,
             height: "500px", // Set the height of the map container
-            width: "100%" // Set the width of the map container
+            width: "100%", // Set the width of the map container
+            position: "relative", // Set the position to relative
           }}
         >
           {position && (
-            <MapContainer center={position} zoom={13} style={{ height: "100%", width: "100%" }}>
-              <TileLayer
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                attribution='© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-              />
-              <Marker position={position} icon={myIcon}>
-                <Popup>
-                  You are here!
-                </Popup>
-              </Marker>
-              {alerts.map((alert) => (
-                <Marker key={alert.id} position={alert.location} />
-              ))}
-            </MapContainer>
+            <>
+              <MapContainer center={position} zoom={13} style={{ height: "100%", width: "100%" }}>
+                <TileLayer
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  attribution='© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                />
+                <Marker position={position} icon={myIcon}>
+                  <Popup>
+                    You are here!
+                  </Popup>
+                </Marker>
+                {alerts.map((alert) => (
+                  <Marker key={alert.id} position={alert.location} />
+                ))}
+              </MapContainer>
+            </>
           )}
+          </Box>
+
+          {/* Buttons Outside the Map Container */}
+        <Box
+          sx={{
+            position: "absolute",
+            left: "400px",
+            bottom: "300px",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <Button variant="contained" color="primary">
+            Get history of alerts
+          </Button>
         </Box>
+
+        <Box
+          sx={{
+            position: "absolute",
+            right: "400px",
+            bottom: "300px",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <Button variant="contained" color="primary">
+            Ambrosia map history
+          </Button>
+        </Box>
+
+        <Box
+          sx={{
+            position: "absolute",
+            right: "400px",
+            top: "60px",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <Button variant="contained" color="primary">
+            Get all locations in Timisoara
+          </Button>
+        </Box>
+        {/* Custom Arrow Shaft */}
+        <div
+          style={{
+            position: "absolute",
+            top: "75px",
+            left: "580px",
+            width: "630px", // Adjust the width to make the shaft longer
+            height: "2px", // Set the height to represent the thickness of the shaft
+            backgroundColor: "#000000", // Choose your arrow color
+          }}
+        ></div>
+        {/* Arrowhead */}
+        <ArrowForwardIcon
+          sx={{
+            position: "absolute",
+            top: "64px",
+            right: "700px",
+            color: "#000000", // Choose your arrow color
+          }}
+        />
       </Box>
     </Container>
   );
