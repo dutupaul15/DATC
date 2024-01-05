@@ -21,7 +21,6 @@ namespace ambrosia_alert_api.Controllers
         public UsersItemsController(IConfiguration configuration)
         {
             string? storageConnectionString = configuration.GetConnectionString("AzureStorage");
-            //string storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=datctable1;AccountKey=i2NdpOOkCX3MuBvbXrNB8Hqgo3CTk1zVQaVrDCHPj5LrkC+le3IwbPyXOHpmzOKxlPnNw5nC2+zv+AStc9Y4VQ==;EndpointSuffix=core.windows.net";
             CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageConnectionString);
             CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
             _table = tableClient.GetTableReference("AmbrosiaAppUsers");
