@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\FACULTATE\\ANUL al IV-lea\\Semestrul I\\DATC\\Proiect\\DATC\\ambrosia-alert-backend\\ambrosia-alert-api\\ambrosia-alert-api.csproj": {}
+    "E:\\DATC\\Proiect\\DATC\\ambrosia-alert-backend\\ambrosia-alert-api\\ambrosia-alert-api.csproj": {}
   },
   "projects": {
-    "C:\\FACULTATE\\ANUL al IV-lea\\Semestrul I\\DATC\\Proiect\\DATC\\ambrosia-alert-backend\\ambrosia-alert-api\\ambrosia-alert-api.csproj": {
+    "E:\\DATC\\Proiect\\DATC\\ambrosia-alert-backend\\ambrosia-alert-api\\ambrosia-alert-api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\FACULTATE\\ANUL al IV-lea\\Semestrul I\\DATC\\Proiect\\DATC\\ambrosia-alert-backend\\ambrosia-alert-api\\ambrosia-alert-api.csproj",
+        "projectUniqueName": "E:\\DATC\\Proiect\\DATC\\ambrosia-alert-backend\\ambrosia-alert-api\\ambrosia-alert-api.csproj",
         "projectName": "ambrosia-alert-api",
-        "projectPath": "C:\\FACULTATE\\ANUL al IV-lea\\Semestrul I\\DATC\\Proiect\\DATC\\ambrosia-alert-backend\\ambrosia-alert-api\\ambrosia-alert-api.csproj",
-        "packagesPath": "C:\\Users\\dutu_\\.nuget\\packages\\",
-        "outputPath": "C:\\FACULTATE\\ANUL al IV-lea\\Semestrul I\\DATC\\Proiect\\DATC\\ambrosia-alert-backend\\ambrosia-alert-api\\obj\\",
+        "projectPath": "E:\\DATC\\Proiect\\DATC\\ambrosia-alert-backend\\ambrosia-alert-api\\ambrosia-alert-api.csproj",
+        "packagesPath": "C:\\Users\\stefa\\.nuget\\packages\\",
+        "outputPath": "E:\\DATC\\Proiect\\DATC\\ambrosia-alert-backend\\ambrosia-alert-api\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\dutu_\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\stefa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
