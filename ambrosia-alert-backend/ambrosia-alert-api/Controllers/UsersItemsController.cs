@@ -110,30 +110,35 @@ namespace ambrosia_alert_api.Controllers
             }
         }
 
-        // DELETE: api/UsersItems/5
-        //[HttpDelete("{id}")]
-        // public async Task<IActionResult> DeleteUserItem(long id)
+        // DELETE: api/UsersItems/{rowKey}
+        // [EnableCors("_myAllowSpecificOrigins")]
+        // [HttpDelete("{rowKey}")]
+        // public async Task<ActionResult> DeleteUserItem(string rowKey)
         // {
-        //     if (_context.UsersItems == null)
+        //     try
         //     {
-        //         return NotFound();
+        //         TableOperation retrieveOperation = TableOperation.Retrieve<UserItem>("RowKey", rowKey);
+        //         TableResult retrievedResult = await _table.ExecuteAsync(retrieveOperation);
+
+        //         if (retrievedResult.Result != null)
+        //         {
+        //             UserItem deleteEntity = (UserItem)retrievedResult.Result;
+
+        //             TableOperation deleteOperation = TableOperation.Delete(deleteEntity);
+        //             await _table.ExecuteAsync(deleteOperation);
+
+        //             return NoContent(); // 204 No Content for successful deletion
+        //         }
+        //         else
+        //         {
+        //             return NotFound(); // 404 Not Found if the entity doesn't exist
+        //         }
         //     }
-        //     var userItem = await _context.UsersItems.FindAsync(id);
-        //     if (userItem == null)
+        //     catch (Exception)
         //     {
-        //         return NotFound();
+        //         // Handle exceptions, such as table not found, as needed
+        //         return StatusCode(500); // 500 Internal Server Error for other exceptions
         //     }
-
-        //     _context.UsersItems.Remove(userItem);
-        //     await _context.SaveChangesAsync();
-
-        //     return NoContent();
         // }
-
-        // private bool UserItemExists(long id)
-        // {
-        //     return (_context.UsersItems?.Any(e => e.Id == id)).GetValueOrDefault();
-        // }
-
     }
 }
